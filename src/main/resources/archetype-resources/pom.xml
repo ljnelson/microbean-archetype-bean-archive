@@ -15,6 +15,7 @@
     <groupId>org.microbean</groupId>
     <artifactId>microbean-pluginmanagement-pom</artifactId>
     <version>13</version>
+    <relativePath/>
   </parent>
 
   <name>${projectName}</name>
