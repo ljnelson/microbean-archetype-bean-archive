@@ -2,7 +2,7 @@
 #set( $year = $dt.getYear() + 1900 )
 /* -*- mode: Java; c-basic-offset: 2; indent-tabs-mode: nil; coding: utf-8-unix -*-
  *
- * Copyright © ${year}#if ("${groupId}" == "org.microbean") MicroBean.
+ * Copyright © ${year}#if ("${groupId}" == "org.microbean") microBean™.
 #else
 
 #end
@@ -26,52 +26,63 @@ import javax.enterprise.context.Initialized;
 
 import javax.enterprise.event.Observes;
 
+import javax.enterprise.inject.se.SeContainerInitializer;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import org.microbean.main.Main;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @ApplicationScoped
 public class TestWithContainerEnvironment {
 
-  
+
   /*
-   * Static fields.
+   * Instance fields.
    */
 
-  
-  /**
-   * The number of instances of this class that have been created (in
-   * the context of JUnit execution; any other usage is undefined).
-   */
-  private static int instanceCount;
+
+  private AutoCloseable container;
 
 
   /*
    * Constructors.
    */
 
-  
+
   public TestWithContainerEnvironment() {
     super();
-    instanceCount++;
   }
 
+
+  /*
+   * Instance methods.
+   */
+
+
+  @Before
+  public void startContainer() throws Exception {
+    this.stopContainer();
+    final SeContainerInitializer initializer = SeContainerInitializer.newInstance();
+    this.container = initializer.initialize();
+  }
+
+  @After
+  public void stopContainer() throws Exception {
+    if (this.container != null) {
+      this.container.close();
+      this.container = null;
+    }
+  }
 
   private final void onStartup(@Observes @Initialized(ApplicationScoped.class) final Object event) {
     assertNotNull(event);
   }
-  
 
   @Test
   public void testContainerStartup() {
-    final int oldInstanceCount = instanceCount;
-    assertEquals(1, oldInstanceCount);
-    Main.main(null);
-    assertEquals(oldInstanceCount + 1, instanceCount);
-  }
-  
-}
 
+  }
+
+}

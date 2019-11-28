@@ -2,7 +2,7 @@
 #set( $year = $dt.getYear() + 1900 )
 /* -*- mode: Java; c-basic-offset: 2; indent-tabs-mode: nil; coding: utf-8-unix -*-
  *
- * Copyright © ${year}#if ("${groupId}" == "org.microbean") MicroBean.
+ * Copyright © ${year}#if ("${groupId}" == "org.microbean") microBean™.
 #else
 
 #end

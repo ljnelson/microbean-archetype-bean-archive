@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archetype-descriptor name="microbean-archetype-bean-archive"
-                      xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+                      xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0
-                                          http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
+                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0
+                                          http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd">
   
   <requiredProperties>
 
@@ -18,7 +18,7 @@
     <requiredProperty key="projectName"/>
     
     <requiredProperty key="version">
-      <defaultValue>0.1.0-SNAPSHOT</defaultValue>
+      <defaultValue>0.0.1-SNAPSHOT</defaultValue>
     </requiredProperty>
 
   </requiredProperties>
@@ -48,7 +48,7 @@
     </fileSet>
 
     <fileSet filtered="false" encoding="UTF-8">
-      <directory>src/findbugs</directory>
+      <directory>src/spotbugs</directory>
     </fileSet>
     
     <fileSet filtered="true" encoding="UTF-8">
